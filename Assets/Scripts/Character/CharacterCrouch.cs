@@ -22,6 +22,12 @@ public class CharacterCrouch : MonoBehaviour
     [Range(0.2f, 50f)]
     private float speed;
 
+    public bool IsCrouching()
+    {
+        //Debug.Log(crouching ? "IS CROUCHING!" : "NOT CROUCHING!");
+        return crouching;
+    }
+
     void Update()
     {
         if (!crouching && KeyManager.main.GetKeyDown(Action.Crouch))

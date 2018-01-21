@@ -9,6 +9,8 @@ using System.Collections;
 public class CharacterController3D : MonoBehaviour
 {
 
+    [SerializeField]
+    private CharacterCrouch characterCrouch;
     private Rigidbody rigidbody3D;
 
     [SerializeField]
@@ -34,8 +36,8 @@ public class CharacterController3D : MonoBehaviour
     [Range(0f, 1f)]
     private float startDragging = 0.5f;
 
-    [SerializeField]
-    private ForceMode moveForceMode;
+    /*[SerializeField]
+    private ForceMode moveForceMode;*/
 
     [SerializeField]
     [Range(0f, 100f)]
@@ -96,19 +98,20 @@ public class CharacterController3D : MonoBehaviour
         var x = Input.GetAxis("Horizontal");
         var z = Input.GetAxis("Vertical");
 
-        float speed = forwardSpeed * z;
+        float crouchModifier = characterCrouch.IsCrouching() ? 0.5f : 1f;
+        float speed = forwardSpeed * crouchModifier * z;
         if (KeyManager.main.GetKey(Action.Sprint))
         {
-            speed = sprintSpeed * z;
+            speed = sprintSpeed * crouchModifier * z;
         }
         if (z < 0)
         {
-            speed = backWardSpeed * z;
+            speed = backWardSpeed * crouchModifier * z;
         }
 
         playerDirection = new Vector3(x * strafeSpeed, 0f, speed);
         
-        if (KeyManager.main.GetKeyDown(Action.Jump))
+        if (KeyManager.main.GetKeyDown(Action.Jump) && !characterCrouch.IsCrouching())
         {
             playerDirection.y = jumpSpeed;
         }
