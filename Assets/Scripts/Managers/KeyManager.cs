@@ -6,7 +6,8 @@ public enum Action
     None,
     Crouch,
     Sprint,
-    Jump
+    Jump,
+    Quit
 }
 
 [System.Serializable]

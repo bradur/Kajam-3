@@ -27,6 +27,9 @@ public class GameManager : MonoBehaviour {
     }
 
     void Update () {
-    
+        if (KeyManager.main.GetKeyUp(Action.Quit))
+        {
+            Application.Quit();
+        }
     }
 }

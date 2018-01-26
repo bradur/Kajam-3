@@ -52,6 +52,9 @@ public class CharacterController3D : MonoBehaviour
 
     private Vector3 playerDirection = Vector3.zero;
 
+    [SerializeField]
+    private LayerMask groundMask;
+
     void Start()
     {
         rigidbody3D = GetComponent<Rigidbody>();
@@ -68,7 +71,7 @@ public class CharacterController3D : MonoBehaviour
                 capsuleCollider.bounds.center.z
             ),
             0.4f,
-            LayerMask.GetMask("SpaceStation")
+            groundMask
         );
     }
 
