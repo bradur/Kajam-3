@@ -9,14 +9,19 @@ ModelImporter:
     100002: Camera
     100004: Lamp
     100006: //RootNode
+    100008: Cube
     400000: BezierCircle
     400002: Camera
     400004: Lamp
     400006: //RootNode
+    400008: Cube
     2000000: Camera
     2300000: BezierCircle
+    2300002: Cube
     3300000: BezierCircle
+    3300002: Cube
     4300000: BezierCircle
+    4300002: Cube
     10800000: Lamp
   externalObjects:
   - first:
